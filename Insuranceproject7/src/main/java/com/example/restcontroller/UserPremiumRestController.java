@@ -52,5 +52,11 @@ public class UserPremiumRestController {
 		return premium1;
 	}
 	
+	// get user details by Id Restful web service
+	@GetMapping("/getUserById/{id}")
+	public User getUserById(@PathVariable("id") Integer id) {
+		User user1=userservice.getUserById(id);
+		return user1;
+	}
 
 }

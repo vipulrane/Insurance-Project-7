@@ -1,6 +1,7 @@
 package com.example.serviceimpl;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -31,6 +32,16 @@ public class UserServiceImpl implements UserService {
 	public void deleteUserById(Integer id) {
 		userrepository.deleteById(id);
 		
+	}
+
+	@Override
+	public User getUserById(Integer id) {
+        Optional<User> user1=userrepository.findById(id);
+        User user2=null;
+        if(user1.isPresent()) {
+        	user2=user1.get();
+        }
+		return user2;
 	}
 
 }

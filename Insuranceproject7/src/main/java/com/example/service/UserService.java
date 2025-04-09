@@ -14,4 +14,7 @@ public interface UserService {
 	
 	//delete user by id
 	public void deleteUserById(Integer id);
+	
+	//get user details by id
+	public User getUserById(Integer id);
 }
