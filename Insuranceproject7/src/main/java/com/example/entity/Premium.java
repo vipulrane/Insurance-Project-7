@@ -9,47 +9,65 @@ import jakarta.persistence.Id;
 public class Premium {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
-	private String username;
-	private Double premiumAmount;
-	private String coverage;
+	private Integer premiumId;
+	private String premiumStatus;
+	private Double amount;
+	private String date;
+	private Integer containId;
+	private Integer policyId;
 
-	public Integer getId() {
-		return id;
+	public Integer getPremiumId() {
+		return premiumId;
 	}
 
-	public void setId(Integer id) {
-		this.id = id;
+	public void setPremiumId(Integer premiumId) {
+		this.premiumId = premiumId;
 	}
 
-	public String getUsername() {
-		return username;
+	public String getPremiumStatus() {
+		return premiumStatus;
 	}
 
-	public void setUsername(String username) {
-		this.username = username;
+	public void setPremiumStatus(String premiumStatus) {
+		this.premiumStatus = premiumStatus;
 	}
 
-	public Double getPremiumAmount() {
-		return premiumAmount;
+	public Double getAmount() {
+		return amount;
 	}
 
-	public void setPremiumAmount(Double premiumAmount) {
-		this.premiumAmount = premiumAmount;
+	public void setAmount(Double amount) {
+		this.amount = amount;
 	}
 
-	public String getCoverage() {
-		return coverage;
+	public String getDate() {
+		return date;
 	}
 
-	public void setCoverage(String coverage) {
-		this.coverage = coverage;
+	public void setDate(String date) {
+		this.date = date;
+	}
+
+	public Integer getContainId() {
+		return containId;
+	}
+
+	public void setContainId(Integer containId) {
+		this.containId = containId;
+	}
+
+	public Integer getPolicyId() {
+		return policyId;
+	}
+
+	public void setPolicyId(Integer policyId) {
+		this.policyId = policyId;
 	}
 
 	@Override
 	public String toString() {
-		return "Premium [id=" + id + ", username=" + username + ", premiumAmount=" + premiumAmount + ", coverage="
-				+ coverage + "]";
+		return "Premium [premiumId=" + premiumId + ", premiumStatus=" + premiumStatus + ", amount=" + amount + ", date="
+				+ date + ", containId=" + containId + ", policyId=" + policyId + "]";
 	}
 
 }
