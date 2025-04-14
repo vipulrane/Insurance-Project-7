@@ -7,16 +7,22 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.entity.Bill;
 import com.example.entity.Premium;
 import com.example.entity.User;
+import com.example.service.BillService;
 import com.example.service.PremiumService;
 import com.example.service.UserService;
 
 @RestController
 public class UserPremiumRestController {
+
+	@Autowired
+	private BillService billService;
 
 	@Autowired
 	private PremiumService premiumService;
@@ -37,7 +43,7 @@ public class UserPremiumRestController {
 		List<User> userlist = userservice.getAllUserDetails();
 		return userlist;
 	}
-	
+
 	// delete user by id RestFul web service
 	@DeleteMapping("/deleteUserById/{id}")
 	public String deleteUserById(@PathVariable("id") Integer id) {
@@ -51,12 +57,44 @@ public class UserPremiumRestController {
 		Premium premium1 = premiumService.savePremiumDetails(premium);
 		return premium1;
 	}
-	
+
 	// get user details by Id Restful web service
 	@GetMapping("/getUserById/{id}")
 	public User getUserById(@PathVariable("id") Integer id) {
-		User user1=userservice.getUserById(id);
+		User user1 = userservice.getUserById(id);
 		return user1;
+	}
+
+	//////////////////////////////////////////////////////////
+
+	// rest controllers for bill entity
+	@PostMapping("/saveBill")
+	public Bill saveBill(@RequestBody Bill bill) {
+
+		Bill bill1 = billService.saveBill(bill);
+
+		return bill1;
+	}
+
+	@PutMapping("/updateBill")
+	public Bill updateBill(@RequestBody Bill bill) {
+
+		Bill bill1 = billService.updateBill(bill);
+
+		return bill1;
+	}
+
+	@GetMapping("/getBillById/{id}")
+	public List<Bill> getBillById(@PathVariable("id") Integer id) {
+		List<Bill> bill1 = billService.getBillById(id);
+		return bill1;
+	}
+	
+	@DeleteMapping("/deleteBill/{id}")
+	public String deleteBill(@PathVariable("id") Integer id) {
+		billService.deleteBill(id);
+		
+		return "Record is deleted successfully..";
 	}
 
 }
